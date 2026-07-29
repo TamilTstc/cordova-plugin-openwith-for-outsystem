@@ -31,9 +31,11 @@ SOFTWARE.
 >
   <name>OpenWith</name>
   <description>Cordova "Open With" plugin for Cordova</description>
-  <engines>
-    <engine name="cordova" version=">=6.0.0" />
-  </engines>
+<engines>
+    <engine name="cordova" version=">=12.0.0"/>
+    <engine name="cordova-android" version=">=13.0.0"/>
+    <engine name="cordova-ios" version=">=7.0.0"/>
+</engines>
   <repo>https://github.com/missive/cordova-plugin-openwith.git</repo>
   <issue>https://github.com/missive/cordova-plugin-openwith/issues</issue>
   <license>MIT</license>
@@ -90,7 +92,6 @@ SOFTWARE.
     </config-file>
 
     <!-- Cordova hooks -->
-    <hook type="before_plugin_install" src="hooks/npmInstall.js" />
     <hook type="after_plugin_install" src="hooks/iosCopyShareExtension.js" />
     <hook type="after_plugin_add" src="hooks/iosAddTarget.js" />
     <hook type="after_prepare" src="hooks/iosAddTarget.js" />
@@ -108,11 +109,7 @@ SOFTWARE.
     <config-file target="AndroidManifest.xml" parent="/manifest/application/activity">
       <intent-filter>
         <!-- See https://developer.android.com/guide/topics/manifest/data-element.html -->
-        <data android:mimeType="audio/*" />
-        <data android:mimeType="application/*" />
-        <data android:mimeType="video/*" />
-        <data android:mimeType="image/*" />
-        <data android:mimeType="text/*" />
+        <data android:mimeType="*/*"/>
         <action android:name="android.intent.action.SEND" />
         <action android:name="android.intent.action.SEND_MULTIPLE" />
         <category android:name="android.intent.category.DEFAULT" />
